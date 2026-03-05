@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/landing/navbar";
-import { Hero } from "@/components/landing/hero";
 import { LinkButton } from "../ui/link-button";
 
 const services = [
@@ -36,7 +34,7 @@ export default function Invest() {
                  <LinkButton
                    href="#contact"
                    size="lg"
-                   className="bg-amber-400 tracking-tight  hover:bg-amber-600 text-white px-8 py-6 rounded-md font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30 mx-auto  w-1/4 lg:w-1/10 "
+                   className="bg-amber-400 tracking-tight  hover:bg-amber-600 text-white px-8 py-6 rounded-md font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30 mx-auto  w-2/4 lg:w-2/10 "
                  >
                    Contact Us
                   

@@ -17,8 +17,6 @@ const services = [
         title: "Consultancy",
         description: "Expert guidance to help you make the best investment decisions."
     },
-
-
 ]
 
 export default function Services() {

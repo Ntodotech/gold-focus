@@ -56,9 +56,9 @@ export function Footer() {
 
 
           {/* Contact & Social - Right */}
-          <div className=" lg:col-span-2 w-full  gap-4">
+          <div className=" col-1 lg:col-span-2 lg:w-full w-10/12  gap-4">
             <div className=" items-end gap-2 ">
-              <h1 className=" hover:text-amber-600 font-bold text-xl transition-colors">
+              <h1 className=" font-bold text-xl transition-colors">
                 Subscribe to our Newsletter
                 <p className="text-sm text-gray-400">Stay updated with the latest gold market trends and offers.</p>
               </h1>
