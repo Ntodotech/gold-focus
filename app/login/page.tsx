@@ -16,14 +16,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Default demo credentials
-  const DEMO_EMAIL = "demo@goldfocus.com";
-  const DEMO_PASSWORD = "demo123456";
 
-  const handleDemoLogin = () => {
-    setEmail(DEMO_EMAIL);
-    setPassword(DEMO_PASSWORD);
-  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,14 +106,14 @@ export default function Login() {
               </Button>
 
               {/* Demo Login Button */}
-              <Button 
+              {/* <Button 
                 type="button"
                 variant="outline"
                 onClick={handleDemoLogin}
                 className="w-full h-12 text-amber-600 border-amber-400 hover:bg-amber-50"
               >
                 Use Demo Account
-              </Button>
+              </Button> */}
             </form>
 
             {/* Forgot Password Link */}
