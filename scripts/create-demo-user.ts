@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 
-// Load environment variables from .env.local if it exists
+
 const envPath = '.env.local';
 if (fs.existsSync(envPath)) {
   dotenv.config({ path: envPath });
