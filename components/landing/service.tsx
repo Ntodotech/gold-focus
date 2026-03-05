@@ -1,38 +1,58 @@
-import { Navbar } from "@/components/landing/navbar";
-import { Hero } from "@/components/landing/hero";
+"use client";
+import {
+  Target01Icon,
+  Storage,
+  UserMultiple02Icon,
+  ChartLineData01Icon,
+  SafeIcon,
+  CorporateIcon,
+  SecurityIcon,
+} from "@hugeicons/core-free-icons";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 const services = [
-    {
-        logo: "https://via.placeholder.com/150",
-        title: "Gold Trading",
-        description: "Buy and sell gold with real-time market pricing."
-    },
-        {
-        logo: "https://via.placeholder.com/150",
-        title: "Investment Plans",
-        description: "Secure your financial future with our tailored gold investment plans."
-    },
-    {
-        logo: "https://via.placeholder.com/150",
-        title: "Consultancy",
-        description: "Expert guidance to help you make the best investment decisions."
-    },
-]
+  {
+    logo: Target01Icon,
+    title: "Gold Trading",
+    description: "Buy and sell gold with real-time market pricing.",
+  },
+  {
+    logo: Storage,
+    title: "Investment Plans",
+    description:
+      "Secure your financial future with our tailored gold investment plans.",
+  },
+  {
+    logo: UserMultiple02Icon,
+    title: "Consultancy",
+    description:
+      "Expert guidance to help you make the best investment decisions.",
+  },
+];
 
 export default function Services() {
   return (
     <section className="bg-gray-100 p-10 lg:p-20">
-     <h1 className="text-center text-3xl font-extrabold mb-6">Our Services</h1>
+      <AnimatedSection>
+        <h1 className="text-center text-3xl font-extrabold mb-6">
+          Our Services
+        </h1>
+      </AnimatedSection>
 
-     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, index) => (
-            <div key={index} className="bg-white p-4 rounded shadow text-center">
-                <img src={service.logo} alt={service.title} className="w-full h-32 object-cover mb-2" />
-                <h2 className="text-xl font-bold">{service.title}</h2>
-                <p>{service.description}</p>
+          <AnimatedSection key={index} delay={index * 0.15} direction="up">
+            <div className="bg-white p-4 rounded shadow text-center h-full">
+              <div className="mb-4 inline-flex h-18 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <HugeiconsIcon icon={service.logo} className="h-10 w-10 text-amber-300" />
+              </div>
+              <h2 className="text-xl font-bold">{service.title}</h2>
+              <p>{service.description}</p>
             </div>
+          </AnimatedSection>
         ))}
-     </div>
+      </div>
     </section>
   );
 }
