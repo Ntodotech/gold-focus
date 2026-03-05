@@ -1,11 +1,10 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/public/logo.webp";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Login, Menu, Close } from "@hugeicons/core-free-icons";
+import {  Menu, Close } from "@hugeicons/core-free-icons";
 import { LinkButton } from "../ui/link-button";
 import { useState } from "react";
 
@@ -21,17 +20,15 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed h-24 top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <nav className="fixed h-20 top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-8xl mx-auto sm:px-6 lg:px-20">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <Image src={logo} alt="Gold Focus Logo" width={70} height={20} className=" w-auto" />
+              <Image src={logo} alt="Gold Focus Logo" width={56} height={20} className=" w-auto" />
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
                 <Link
