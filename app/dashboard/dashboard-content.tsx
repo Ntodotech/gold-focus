@@ -4,7 +4,6 @@ import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { supabase } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 type User = {
   id: string;
@@ -23,7 +22,7 @@ export function DashboardContent({ user }: { user: User }) {
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow">
+      <div className="grow">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Dashboard</h1>
           <p className="text-gray-600 mb-8">
