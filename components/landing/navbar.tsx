@@ -20,7 +20,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed h-20 top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <nav className="fixed h-20 top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-8xl mx-auto sm:px-6 lg:px-20">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">

@@ -41,7 +41,7 @@ export function Hero() {
             <AnimatedSection delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center ">
                 <LinkButton
-                  href="#contact"
+                  href="/login"
                   size="lg"
                   className="bg-amber-400 tracking-tight  hover:bg-amber-600 text-white px-8 py-7 rounded-md font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30 mx-auto  w-2/4 lg:w-1/5 animate-zoom-in-out"
                 >
