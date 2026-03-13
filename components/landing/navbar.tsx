@@ -34,8 +34,8 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-gray-700 hover:text-amber-600 font-bold transition-colors duration-200 relative group ${
-                    pathname === link.href ? "text-amber-600" : ""
+                  className={`text-gray-700 hover:text-amber-600  font-normal transition-colors duration-200 relative group ${
+                    pathname === link.href ? "text-amber-600 font-bold" : ""
                   }`}
                 >
                   {link.label}
@@ -51,7 +51,7 @@ export function Navbar() {
             <LinkButton
               href="/login"
               size="lg"
-              className="bg-black hover:bg-amber-700 text-white px-6 py-2.5 rounded-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-amber-600/25"
+              className="bg-black hover:bg-amber-700 text-white px-6 py-2.5 rounded-sm font-normal transition-all duration-200 hover:shadow-lg hover:shadow-amber-600/25"
             >
               <span>Login</span>
             </LinkButton>
