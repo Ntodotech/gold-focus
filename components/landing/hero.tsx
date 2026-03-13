@@ -26,14 +26,14 @@ export function Hero() {
         <AnimatedSection>
           <div className="max-w-6xl mx-auto text-center">
             {/* Headline */}
-            <p className="text-white font-bold text-2xl mb-2">15+ Years of Experience</p>
+            <p className="text-white font-normal text-2xl mb-2">15+ Years of Experience</p>
             <h1 className="text-4xl  sm:text-5xl lg:text-3xl xl:text-5xl font-bold text-white leading-tight mb-6">
               Secure Your Future with{" "}
               <span className="text-amber-400">Gold Investments</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-md sm:text-lg text-white font-semibold mb-8 tracking-tight max-w-5xl">
+            <p className="text-md sm:text-lg text-white font-normal mb-8 tracking-tight max-w-5xl">
               Trusted & transparent gold trading for a brighter tomorrow.
             </p>
 
@@ -43,7 +43,7 @@ export function Hero() {
                 <LinkButton
                   href="/login"
                   size="lg"
-                  className="bg-amber-400 tracking-tight  hover:bg-amber-600 text-white px-8 py-7 rounded-md font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30 mx-auto  w-2/4 lg:w-1/5 animate-zoom-in-out"
+                  className="bg-amber-400 tracking-tight  hover:bg-amber-600 text-white px-8 py-7 rounded-md font-normal text-lg transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/30 mx-auto  w-2/4 lg:w-1/5 animate-zoom-in-out"
                 >
                   Access Vault Login
                 </LinkButton>

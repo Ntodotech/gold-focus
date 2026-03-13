@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
@@ -20,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased`}
+        className={`${outfit.className} `}
       >
         {children}
       </body>
