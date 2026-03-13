@@ -32,18 +32,20 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <AnimatedSection direction="up">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-4">Contact Us</h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Have questions about gold investment? Get in touch with our expert team.
+                We’re here to help. Get in touch with us today!
+
+
               </p>
             </div>
           </AnimatedSection>
 
           {/* Contact Content - Address on Left, Form on Right */}
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Left Side - Company Address */}
             <AnimatedSection direction="left">
-              <div className="bg-white rounded-2xl shadow-lg p-8 h-auto">
+              <div className="bg-white rounded-2xl shadow-lg p-8 h-full">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
                 
                 <div className="space-y-6">
@@ -113,14 +115,14 @@ export default function ContactPage() {
 
             {/* Right Side - Contact Form */}
             <AnimatedSection direction="right" delay={0.1}>
-              <div className="bg-white rounded-2xl shadow-lg p-8">
+              <div className="bg-white rounded-2xl shadow-lg p-8 h-full">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
                 
                 <form className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-1 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                        First Name
+                        Full Name
                       </label>
                       <input
                         type="text"
@@ -128,22 +130,10 @@ export default function ContactPage() {
                         name="firstName"
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                        placeholder="John"
+                        placeholder="John Doe"
                       />
                     </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                        placeholder="Doe"
-                      />
-                    </div>
+          
                   </div>
 
                   <div>
@@ -157,33 +147,6 @@ export default function ContactPage() {
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
                       placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                      placeholder="+44 7700 900000"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                      placeholder="Investment Inquiry"
                     />
                   </div>
 
@@ -203,7 +166,7 @@ export default function ContactPage() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                    className="w-full bg-yellow-600 hover:bg-amber-600 text-white font-semibold py-5 px-6 rounded-lg transition-colors duration-200"
                   >
                     Send Message
                   </Button>
@@ -216,11 +179,12 @@ export default function ContactPage() {
 
       {/* Map Section */}
       <section className="px-6 lg:px-0 ">
+        <h1 className="text-center my-10 text-5xl font-bold text-yellow-600">Our Location</h1>
         <div className="max-w-fullmx-auto">
           <AnimatedSection direction="up" delay={0.2}>
             <div className="bg-white  shadow-lg overflow-hidden">
              
-              <div className="h-96 lg:h-[500px] w-full">
+              <div className="h-96 lg:h-[500px] w-full px-20">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.926234587464!2d-1.8961696842244082!3d52.47762997981485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc4c4a6ab5e3%3A0x9e5a8e9e8e8e8e8e!2sCentre%20City%20Tower%2C%207%20Hill%20St%2C%20Birmingham%20B5%204UA%2C%20UK!5e0!3m2!1sen!2s!4v1645564654654!5m2!1sen!2s"
                   width="100%"
