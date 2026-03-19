@@ -23,6 +23,15 @@ export default function Login() {
     setLoading(true);
     setError(null);
 
+    // Demo mode - allow login with any credentials for testing
+    // Remove this block when real Supabase auth is configured
+    if (email && password) {
+      // Simulate auth delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      router.push("/dashboard?demo=true");
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -65,13 +74,13 @@ export default function Login() {
               {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
+                  Account ID
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
-                  placeholder="you@example.com"
+                  placeholder="account id"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
