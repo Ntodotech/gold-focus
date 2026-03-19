@@ -54,7 +54,7 @@ export default function Service() {
       <Navbar />
       <section className="pt-32 pb-20 px-6 lg:px-20 bg-gray-50">
         <AnimatedSection>
-          <h1 className="text-center text-yellow-600 text-4xl font-extrabold mb-6">
+          <h1 className="text-center text-yellow-600 text-5xl font-extrabold mb-6">
             Our Services
           </h1>
           <p className="text-center mb-10">

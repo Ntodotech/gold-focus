@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import logo from "@/public/logo.webp";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { MailIcon, AiPhoneIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon, LocationIcon } from "@hugeicons/core-free-icons";
+import {  FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "@hugeicons/core-free-icons";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
 const navLinks = [
@@ -40,7 +38,6 @@ export function Footer() {
             </div>
           </AnimatedSection>
 
-          {/* Navigation Links - Center */}
           <AnimatedSection direction="up" delay={0.1} className="lg:col-span-2">
             <div>
               <h3 className="mb-4 text-xl font-semibold">Quick Links</h3>
@@ -60,7 +57,6 @@ export function Footer() {
           </AnimatedSection>
 
 
-          {/* Contact & Social - Right */}
           <AnimatedSection direction="right" delay={0.2} className="col-1 lg:col-span-2 lg:w-full w-10/12  gap-4">
             <div className=" items-end gap-2 ">
               <h1 className=" font-bold text-xl transition-colors">
@@ -75,7 +71,6 @@ export function Footer() {
           </AnimatedSection>
         </div>
 
-        {/* Bottom Bar */}
         <AnimatedSection direction="up" delay={0.3}>
           <div className="mt-10 pt-6 flex justify-between border-t border-gray-200">
             <div className="text-center text-sm text-gray-500">
