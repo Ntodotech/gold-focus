@@ -2,11 +2,6 @@
 import {
   GoldIcon,
   Handshake,
-  UserMultiple02Icon,
-  ChartLineData01Icon,
-  SafeIcon,
-  CorporateIcon,
-  SecurityIcon,
 } from "@hugeicons/core-free-icons";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { HugeiconsIcon } from "@hugeicons/react";
