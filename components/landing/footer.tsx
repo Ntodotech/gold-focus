@@ -61,7 +61,7 @@ export function Footer() {
             <div className=" items-end gap-2 ">
               <h1 className=" font-bold text-xl transition-colors">
                 Subscribe to our Newsletter
-                <p className="text-sm text-gray-400">Stay updated with the latest gold market trends and offers.</p>
+                <p className="text-sm font-light text-gray-400">Stay updated with the latest gold market trends and offers.</p>
               </h1>
               <div className="flex items-center mt-5 gap-0">
                 <input type="email" className="px-4 py-2 bg-white border-gray-300 rounded-l-md w-80 placeholder:text-gray-600 text-gray-900" placeholder="Enter your email" />
