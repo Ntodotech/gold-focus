@@ -71,10 +71,9 @@ export function Footer() {
           </AnimatedSection>
         </div>
 
-        <AnimatedSection direction="up" delay={0.3}>
-          <div className="mt-10 pt-6 flex justify-between border-t border-gray-200">
-            <div className="text-center text-sm text-gray-500">
-              © {new Date().getFullYear()}  Imperial Gold Security. All rights reserved..
+          <div className="mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-gray-700">
+            <div className="text-sm text-white font-medium">
+              © {new Date().getFullYear()} Imperial Gold Security. All rights reserved.
             </div>
                 <div className="flex items-center gap-3">
                 {socialLinks.map((social) => (
@@ -89,7 +88,6 @@ export function Footer() {
                 ))}
               </div>
           </div>
-        </AnimatedSection>
       
       </div>
     </footer>
