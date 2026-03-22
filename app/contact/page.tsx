@@ -182,7 +182,7 @@ export default function ContactPage() {
         <h1 className="text-center my-10 text-5xl font-bold text-yellow-600">Our Location</h1>
         <div className="max-w-fullmx-auto">
           <AnimatedSection direction="up" delay={0.2}>
-            <div className="bg-white  shadow-lg overflow-hidden">
+            <div className="bg-tr mb-20  overflow-hidden">
              
               <div className="h-96 lg:h-[500px] w-full px-20">
                 <iframe
