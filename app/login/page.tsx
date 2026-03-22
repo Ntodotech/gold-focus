@@ -23,25 +23,22 @@ export default function Login() {
     setLoading(true);
     setError(null);
 
-    // Demo mode - allow login with any credentials for testing
-    // Remove this block when real Supabase auth is configured
-    if (email && password) {
-      // Simulate auth delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-      router.push("/dashboard?demo=true");
-      return;
-    }
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email + "@gmail.com",
+        password,
+      });
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      setError(error.message);
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+      } else {
+        // Navigate to dashboard - the dashboard page will handle auth check
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
       setLoading(false);
-    } else {
-      router.push("/dashboard");
     }
   };
 
