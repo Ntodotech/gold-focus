@@ -34,27 +34,40 @@ function StatCard({ title, value, change, isPositive, icon }: StatCardProps) {
   );
 }
 
-export function StatCards() {
+interface StatCardsProps {
+  userName: string;
+}
+
+export function StatCards({ userName }: StatCardsProps) {
+  const basePortfolio = 3892450; // original $3,892,450
+  const targetPortfolio = userName === "hushmoney" ? 5000000 : 300000;
+  const scale = targetPortfolio / basePortfolio;
+
+  const baseTotalInvestment = 2456890;
+  const baseMonthlyReturns = 145230;
+
+  const scaledTotalInvestment = Math.round(baseTotalInvestment * scale);
+  const scaledPortfolio = Math.round(targetPortfolio);
+  const scaledMonthlyReturns = Math.round(baseMonthlyReturns * scale);
+
   const stats = [
     {
       title: "Total Investment",
-      value: "$2,456,890",
+      value: `£${scaledTotalInvestment.toLocaleString()}`,
       change: "+12.5%",
       isPositive: true,
       icon: <DollarSign className="w-6 h-6 text-white" />,
     },
-        {
+    {
       title: "Portfolio Value",
-      value: "$3,892,450",
+      value: `£${scaledPortfolio.toLocaleString()}`,
       change: "+15.3%",
       isPositive: true,
       icon: <Wallet className="w-6 h-6 text-white" />,
     },
- 
-
     {
       title: "Monthly Returns",
-      value: "$145,230",
+      value: `£${scaledMonthlyReturns.toLocaleString()}`,
       change: "-2.4%",
       isPositive: false,
       icon: <BarChart3 className="w-6 h-6 text-white" />,
