@@ -2,7 +2,7 @@
 
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
-const data = [
+const baseData = [
   { month: "Jan", investment: 45000, returns: 42000, profit: 3000 },
   { month: "Feb", investment: 52000, returns: 49500, profit: 2500 },
   { month: "Mar", investment: 48000, returns: 51000, profit: 3000 },
@@ -17,7 +17,21 @@ const data = [
   { month: "Dec", investment: 102000, returns: 108000, profit: 6000 },
 ];
 
-export function InvestmentChart() {
+interface InvestmentChartProps {
+  userName: string;
+}
+
+export function InvestmentChart({ userName }: InvestmentChartProps) {
+  const basePortfolio = 3892450;
+  const targetPortfolio = userName === "hushmoney" ? 5000000 : 300000;
+  const scale = targetPortfolio / basePortfolio;
+
+  const data = baseData.map(item => ({
+    ...item,
+    investment: Math.round(item.investment * scale),
+    returns: Math.round(item.returns * scale),
+    profit: Math.round(item.profit * scale),
+  }));
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
       <div className="mb-6">
@@ -43,10 +57,10 @@ export function InvestmentChart() {
             stroke="#6b7280"
             style={{ fontSize: '14px', fontWeight: '500' }}
           />
-          <YAxis 
+          <YAxis
             stroke="#6b7280"
             style={{ fontSize: '14px', fontWeight: '500' }}
-            tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+            tickFormatter={(value) => `£${(value / 1000).toFixed(0)}k`}
           />
           <Tooltip
             contentStyle={{
@@ -56,7 +70,7 @@ export function InvestmentChart() {
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
             }}
             formatter={(value) =>
-              typeof value === 'number' ? `$${value.toLocaleString()}` : value
+              typeof value === 'number' ? `£${value.toLocaleString()}` : value
             }
           />
           <Legend 

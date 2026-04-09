@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  TrendingUp, 
-  Wallet, 
-  Settings, 
+import { usePathname, useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase/client";
+import {
+  LayoutDashboard,
+  TrendingUp,
+  Wallet,
+  Settings,
   LogOut,
   BarChart3,
   Users,
@@ -25,6 +26,12 @@ const menuItems = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+  };
 
   return (
     <aside className="w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen fixed left-0 top-0 shadow-2xl">
@@ -66,7 +73,10 @@ export function Sidebar() {
 
       {/* Logout */}
       <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700">
-        <button className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-all duration-200 w-full">
+        <button
+          onClick={handleLogout}
+          className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-all duration-200 w-full"
+        >
           <LogOut className="w-5 h-5" />
           <span>Logout</span>
         </button>

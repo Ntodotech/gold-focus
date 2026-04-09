@@ -45,13 +45,13 @@ export default async function Dashboard() {
           </div>
 
           {/* Stat Cards */}
-          <StatCards />
+          <StatCards userName={displayName} />
 
           {/* Investment Chart */}
-          <InvestmentChart />
+          <InvestmentChart userName={displayName} />
 
           {/* Transactions Table */}
-          <TransactionsTable />
+          <TransactionsTable userName={displayName} />
         </main>
       </div>
     </div>
