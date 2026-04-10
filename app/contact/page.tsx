@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -11,7 +13,7 @@ const companyInfo = {
   name: "Imperial Gold Security",
   address: "Floor 16, Centre City Tower,\n7 Hill St, Birmingham B5 4UA,\nUnited Kingdom",
   phone: "+44 1234 567890",
-  email: "info@imperialgoldsecurity.com",
+  email: "info.imperialgold@mail.com",
   hours: "Mon - Fri: 9:00 AM - 6:00 PM\nSat: 10:00 AM - 2:00 PM",
 };
 
@@ -23,6 +25,56 @@ const socialLinks = [
 ];
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  // Initialize EmailJS
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+    }
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get("firstName") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: name,
+          from_email: email,
+          message: message,
+          to_email: "info.imperialgold@mail.com",
+        }
+      );
+
+      // EmailJS send was successful
+      console.log("EmailJS result:", result);
+      setSubmitStatus("success");
+      form.reset();
+
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 5000);
+    } catch (error) {
+      console.error("Email send failed:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
@@ -118,7 +170,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl shadow-lg p-8 h-full">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
                 
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-1 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
@@ -166,10 +218,32 @@ export default function ContactPage() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-yellow-600 hover:bg-amber-600 text-white font-semibold py-5 px-6 rounded-lg transition-colors duration-200"
+                    disabled={isSubmitting}
+                    className="w-full bg-yellow-600 hover:bg-amber-600 disabled:bg-gray-400 text-white font-semibold py-5 px-6 rounded-lg transition-colors duration-200"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
+
+                  {submitStatus === "success" && (
+                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-green-800 text-sm">
+                        Thank you for your message! We&apos;ll get back to you soon.
+                      </p>
+                    </div>
+                  )}
+
+                  {submitStatus === "error" && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-red-800 text-sm">
+                        Sorry, there was an error sending your message. Please try again or contact us directly.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Debug info */}
+                  <div className="mt-2 text-xs text-gray-500">
+                    Status: {submitStatus} | Submitting: {isSubmitting ? "true" : "false"}
+                  </div>
                 </form>
               </div>
             </AnimatedSection>
