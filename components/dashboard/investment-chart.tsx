@@ -1,6 +1,7 @@
 "use client";
 
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { applyDailyGrowth } from "@/lib/daily-growth";
 
 const baseData = [
   { month: "Jan", investment: 45000, returns: 42000, profit: 3000 },
@@ -25,13 +26,32 @@ export function InvestmentChart({ userName }: InvestmentChartProps) {
   const basePortfolio = 3892450;
   const targetPortfolio = userName === "hushmoney" ? 5000000 : 300000;
   const scale = targetPortfolio / basePortfolio;
+  const growthRate = 0.025; // 2.5% daily growth
 
-  const data = baseData.map(item => ({
-    ...item,
-    investment: Math.round(item.investment * scale),
-    returns: Math.round(item.returns * scale),
-    profit: Math.round(item.profit * scale),
-  }));
+  const data = baseData.map((item, index) => {
+    const monthMultiplier = Math.pow(1 + growthRate, index * 30); // Approximate 30 days per month
+    return {
+      ...item,
+      investment: applyDailyGrowth(
+        Math.round(item.investment * scale * monthMultiplier),
+        growthRate,
+        `chart_investment_${userName}_${index}`,
+        `chart_investment_date_${userName}_${index}`
+      ),
+      returns: applyDailyGrowth(
+        Math.round(item.returns * scale * monthMultiplier),
+        growthRate,
+        `chart_returns_${userName}_${index}`,
+        `chart_returns_date_${userName}_${index}`
+      ),
+      profit: applyDailyGrowth(
+        Math.round(item.profit * scale * monthMultiplier),
+        growthRate,
+        `chart_profit_${userName}_${index}`,
+        `chart_profit_date_${userName}_${index}`
+      ),
+    };
+  });
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
       <div className="mb-6">
