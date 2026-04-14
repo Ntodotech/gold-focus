@@ -1,6 +1,7 @@
 "use client";
 
 import { TrendingUp, TrendingDown, DollarSign, Users, Wallet, BarChart3 } from "lucide-react";
+import { applyDailyGrowth } from "@/lib/daily-growth";
 
 interface StatCardProps {
   title: string;
@@ -40,15 +41,32 @@ interface StatCardsProps {
 
 export function StatCards({ userName }: StatCardsProps) {
   const basePortfolio = 3892450; // original $3,892,450
-  const targetPortfolio = userName === "hushmoney" ? 5000000 : 300000;
+  const targetPortfolio = userName === "hushmoney" ? 590000 : 306000;
   const scale = targetPortfolio / basePortfolio;
 
   const baseTotalInvestment = 2456890;
   const baseMonthlyReturns = 145230;
 
-  const scaledTotalInvestment = Math.round(baseTotalInvestment * scale);
-  const scaledPortfolio = Math.round(targetPortfolio);
-  const scaledMonthlyReturns = Math.round(baseMonthlyReturns * scale);
+  // Apply daily growth of 2.5% to scaled values
+  const growthRate = 0.025; // 2.5% daily growth
+  const scaledTotalInvestment = applyDailyGrowth(
+    Math.round(baseTotalInvestment * scale),
+    growthRate,
+    `totalInvestment_${userName}`,
+    `totalInvestmentDate_${userName}`
+  );
+  const scaledPortfolio = applyDailyGrowth(
+    Math.round(targetPortfolio),
+    growthRate,
+    `portfolioValue_${userName}`,
+    `portfolioValueDate_${userName}`
+  );
+  const scaledMonthlyReturns = applyDailyGrowth(
+    Math.round(baseMonthlyReturns * scale),
+    growthRate,
+    `monthlyReturns_${userName}`,
+    `monthlyReturnsDate_${userName}`
+  );
 
   const stats = [
     {
